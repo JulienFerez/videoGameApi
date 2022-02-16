@@ -4,7 +4,7 @@
   <div>
 
     <p>
-        {% for game in games %}
+        {% for platform in games %}
         <li>{{ game.name }}</li>
         {% else %}
        <li>This would display if the 'item' collection were empty</li>
@@ -12,3 +12,4 @@
       </p>
   </div>
 {% endblock %}
+
