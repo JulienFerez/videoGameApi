@@ -1,0 +1,14 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <div>
+
+    <p>
+        {% for game in games %}
+        <li>{{ game.name }}</li>
+        {% else %}
+       <li>This would display if the 'item' collection were empty</li>
+        {% endfor %}
+      </p>
+  </div>
+{% endblock %}

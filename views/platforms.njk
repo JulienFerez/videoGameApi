@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <div>
+
+    <p>
+        {% for platform in platforms %}
+        <li><a href = "/platforms/game">{{ platform.name }}</a></li>
+        {% else %}
+       <li>This would display if the 'item' collection were empty</li>
+        {% endfor %}
+
+
+      </p>
+      </p>
+  </div>
+{% endblock %}
