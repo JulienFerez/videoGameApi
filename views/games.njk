@@ -4,10 +4,9 @@
   <div>
 
     <p>
-        {% for platform in games %}
-        <li>{{ game.name }}</li>
-        {% else %}
-       <li>This would display if the 'item' collection were empty</li>
+        {% for item in catalogGames %}
+        <li><a href = "games/game/{{item.name}}/{{item.id}}">{{ item.name }}</a></li>
+
         {% endfor %}
       </p>
   </div>

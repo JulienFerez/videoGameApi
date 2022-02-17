@@ -3,15 +3,13 @@
 {% block content %}
   <div>
 
-    <p>
-        {% for platform in platforms %}
-        <li><a href=/platform/{{games.id}}>{{ platform.name }}</a></li>
-        {% else %}
-       <li>This would display if the 'item' collection were empty</li>
+
+        {% for item in plateform %}
+        <li><a href="/Platform/{{item.name}}/{{item.id}}">{{ item.name }}</a></li>
+
         {% endfor %}
 
 
-      </p>
-      </p>
+
   </div>
 {% endblock %}
