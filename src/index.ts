@@ -56,10 +56,9 @@ app.get("/Platform/Windows%20Phone/games/game/:itemname/:itemid/", (httprequest,
       throw error;
     }
     const data = JSON.parse(body);
-    console.log(data.screenshots);
+    console.log(data);
     response.render("game", {
       gameinfo: data,
-      gamegenres: data.genres,
       gamescreenshots: data.screenshots,
     });
   });

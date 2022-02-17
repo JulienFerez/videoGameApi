@@ -5,6 +5,17 @@
     </br>
     {{gameinfo.category}}
     </br>
-    {{gamescreenshots}}
+
+   <img src=" {{gameinfo.cover.url}}"/>
+
+
+{% for screen in gamescreenshots %}
+   <img href ="{{screen.url}}" src ="{{screen.url}}" />
+
+{% endfor %}
+
 </p>
 {% endblock %}
+
+
+
