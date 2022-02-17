@@ -1,13 +1,28 @@
 {% extends "layout.njk" %}
 {% block content %}
  <p>
+   </br>
+   </br>
+   </br>
     {{gameinfo.name}}
+    </br>
+    </br>
+    <hr>
+    </br>
     </br>
     {{gameinfo.category}}
     </br>
-
+    </br>
+    </br>
+    <hr>
+    </br>
+    </br>
+    </br>
    <img src=" {{gameinfo.cover.url}}"/>
-
+   </br>
+    </br>
+    </br>
+     <hr>
 
 {% for screen in gamescreenshots %}
    <img href ="{{screen.url}}" src ="{{screen.url}}" />

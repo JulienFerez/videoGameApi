@@ -18,7 +18,7 @@ app.get("/", (request, response) => {
   response.render("home");
 });
 
-// AFFICHER LES DIFFERENTES PLATFORMS
+// DISPLAY DIFFERENT PLATFORMS ON PAGE 1
 app.get("/platform", (httpreq, resp) => {
   request("http://videogame-api.fly.dev/platforms", (error, body) => {
     if (error) {
@@ -30,7 +30,9 @@ app.get("/platform", (httpreq, resp) => {
   });
 });
 
-// AFFICHER DIFFERENTS JEUX EN FONCTION DE LA PLATEFORME
+//  PAGINATION OF THE DIFFERENT PLATFORMS
+
+// DISPLAY DIFFERENT GAMES DEPENDING ON THE PLATFORM
 
 app.get("/Platform/:itemname/:itemid", (httpRequest, response) => {
   const routeParameters = httpRequest.params;
@@ -46,7 +48,7 @@ app.get("/Platform/:itemname/:itemid", (httpRequest, response) => {
   });
 });
 
-// AFFICHER LES DETAILS DES JEUX
+// SHOW GAME DETAILS
 
 app.get("/Platform/Windows%20Phone/games/game/:itemname/:itemid/", (httprequest, response) => {
   const routeParameters = httprequest.params;
@@ -56,7 +58,7 @@ app.get("/Platform/Windows%20Phone/games/game/:itemname/:itemid/", (httprequest,
       throw error;
     }
     const data = JSON.parse(body);
-    console.log(data);
+
     response.render("game", {
       gameinfo: data,
       gamescreenshots: data.screenshots,
