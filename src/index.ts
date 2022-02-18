@@ -20,14 +20,33 @@ app.get("/", (request, response) => {
 
 // DISPLAY DIFFERENT PLATFORMS ON PAGE 1
 app.get("/platform", (httpreq, resp) => {
-  request("http://videogame-api.fly.dev/platforms", (error, body) => {
-    if (error) {
-      throw error;
-    }
-    const data = JSON.parse(body);
-    console.log(data);
-    resp.render("platforms", { list: data.platforms });
-  });
+  const page = httpreq.query;
+  console.log(typeof page.page, "line24");
+  console.log(page.page, "line25");
+  console.log(Number(page.page), "line26");
+  if (page.page) {
+    request(`http://videogame-api.fly.dev/platforms?page=${Number(page.page)}`, (error, body) => {
+      if (error) {
+        throw error;
+      }
+
+      const data = JSON.parse(body);
+      //console.log("\n TEST 32 ", data);
+      const totalNumbersOfPages = Math.ceil(data.total / 20);
+      // Object.keys(data)
+      resp.render("platforms", { list: data.platforms, totalNumbersOfPages });
+    });
+  } else {
+    request("http://videogame-api.fly.dev/platforms", (error, body) => {
+      if (error) {
+        throw error;
+      }
+      const data = JSON.parse(body);
+      const totalNumbersOfPages = Math.ceil(data.total / 20);
+
+      resp.render("platforms", { list: data.platforms, totalNumbersOfPages });
+    });
+  }
 });
 
 //  DISPLAY DES DIFFERENTS JEUX EN FONCTION DE LA PLATEFORME
@@ -60,8 +79,24 @@ app.get("/gameInformation/:itemid", (httprequest, response) => {
     });
   });
 });
+/*
+//manage the different platform links
 
-//
+app.get("platforms/", (httprequest, resp) => {
+  const page = httprequest.query;
+  console.log(page);
+  console.log();
+  console.log(httprequest.query);
+  request(`http://videogame-api.fly.dev/platforms?page=${page}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const data = JSON.parse(body);
+
+    resp.render("platforms", { list: data.platforms });
+  });
+});
+*/
 // APPEL DU SERVEUR
 
 app.listen(3000, () => {

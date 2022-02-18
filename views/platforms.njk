@@ -17,8 +17,6 @@
         {% endfor %}
 
   </div>
-
-
 </br>
 </br>
 </br>
@@ -34,10 +32,16 @@
     Plateforms
     </a>
 </button>
-
+{{pageNumber}}
 <button>
-    <a href ="http://videogame-api.fly.dev/platforms?page=2">
-    Page Suivante
+    <a href="/platform?page={{totalNumbersOfPages}}">
+    Dernière page
+    </a>
+</button>
+<button>
+    <a href="/platform?page={{page.page+1}}">
+
+    TEST
     </a>
 </button>
 
