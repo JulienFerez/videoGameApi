@@ -25,32 +25,27 @@ app.get("/platform", (httpreq, resp) => {
       throw error;
     }
     const data = JSON.parse(body);
-
-    resp.render("platforms", { plateform: data.platforms });
+    console.log(data);
+    resp.render("platforms", { list: data.platforms });
   });
 });
 
-//  PAGINATION OF THE DIFFERENT PLATFORMS
-
-// DISPLAY DIFFERENT GAMES DEPENDING ON THE PLATFORM
-
-app.get("/Platform/:itemname/:itemid", (httpRequest, response) => {
-  const routeParameters = httpRequest.params;
-  const id = routeParameters.itemid;
-  const name = routeParameters.itemname;
-  request(`http://videogame-api.fly.dev/games/platforms/${id}`, (error, body) => {
+//  DISPLAY DES DIFFERENTS JEUX EN FONCTION DE LA PLATEFORME
+app.get("/gameList/:platformId", (httprequest, response) => {
+  const routeParameters = httprequest.params;
+  const platformId = routeParameters.platformId;
+  // console.log(platformId);
+  request(`http://videogame-api.fly.dev/games/platforms/${platformId}`, (error, body) => {
     if (error) {
       throw error;
     }
-    const data = JSON.parse(body);
-
-    response.render("games", { catalogGames: data.games, nom: name });
+    const result = JSON.parse(body);
+    response.render("listOfGames", { list: result.games, total: result.total });
   });
 });
 
-// SHOW GAME DETAILS
-
-app.get("/Platform/Windows%20Phone/games/game/:itemname/:itemid/", (httprequest, response) => {
+//DISPLAY INFORMATIONS OF GAME
+app.get("/gameInformation/:itemid", (httprequest, response) => {
   const routeParameters = httprequest.params;
   const game = routeParameters.itemid;
   request(`http://videogame-api.fly.dev/games/${game}`, (error, body) => {
@@ -59,13 +54,14 @@ app.get("/Platform/Windows%20Phone/games/game/:itemname/:itemid/", (httprequest,
     }
     const data = JSON.parse(body);
 
-    response.render("game", {
+    response.render("gameInformation", {
       gameinfo: data,
       gamescreenshots: data.screenshots,
     });
   });
 });
 
+//
 // APPEL DU SERVEUR
 
 app.listen(3000, () => {

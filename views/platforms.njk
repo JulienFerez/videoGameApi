@@ -4,22 +4,42 @@
   <div>
 
 
-        {% for item in plateform %}
-        <li> <a href="/Platform/{{item.name}}/{{item.id}}">{{ item.name }}
-        <img src href="{{item.logo}}"</a></li>
-
+        {% for platform in list %}
+        <li> <a href="/gameList/{{platform.id}}">{{ platform.name }}
+        </br>
+        </br>
+        <img href="{{platform.logo.url}}"src="{{platform.logo.url}}">
+</br>
+</br>
+</br>
+</br>
+<hr>
         {% endfor %}
 
   </div>
 
-</br>
-</br>
-</br>
-</br>
-</br>
-<input type=button href="/"; value="Page d'acceuil" />
-<input type=button href="/platform"; value="Platforms" />
-<input type=button href="#"; value="Page Suivante" />
 
+</br>
+</br>
+</br>
+</br>
+</br>
+<button>
+    <a href ="/">
+    Page d'acceuil
+    </a>
+</button>
+<button>
+    <a href ="/platform">
+    Plateforms
+    </a>
+</button>
+
+<button>
+    <a href ="http://videogame-api.fly.dev/platforms?page=2">
+    Page Suivante
+    </a>
+</button>
 
 {% endblock %}
+

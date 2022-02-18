@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+  <div>
+
+    <p>
+        {% for game in list %}
+        <li><a href = "/gameInformation/{{game.id}}">{{ game.name }}</a></li>
+
+
+        {% endfor %}
+      </p>
+  </div>
+
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+<button>
+    <a href ="/">
+    Page d'acceuil
+    </a>
+</button>
+<button>
+    <a href ="/platform">
+    Plateforms
+    </a>
+</button>
+
+<button>
+    <a href ="">
+    Page Suivante
+    </a>
+</button>
+{% endblock %}
+
